@@ -44,6 +44,11 @@
       <artifactId>drools-compiler</artifactId>
       <version>5.4.0.Final</version>
     </dependency>
+    <dependency>
+      <groupId>org.drools.examples</groupId>
+      <artifactId>drools-twitter-model</artifactId>
+      <version>1.0</version>
+    </dependency>
 
     <!-- External dependencies -->
     <dependency>
