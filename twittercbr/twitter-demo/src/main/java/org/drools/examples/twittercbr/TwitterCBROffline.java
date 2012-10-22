@@ -88,7 +88,7 @@ public class TwitterCBROffline {
     private static void feedEvents( final StatefulKnowledgeSession ksession,
                                     final WorkingMemoryEntryPoint ep ) {
         try {
-            StatusListener listener = new TwitterStatusListener( ep );
+            StatusListener listener = new TwitterStatusListener( ksession, ep );
             ObjectInputStream in = new ObjectInputStream( new FileInputStream( "src/main/resources/twitterstream.dump" ) );
             SessionPseudoClock clock = ksession.getSessionClock();
             

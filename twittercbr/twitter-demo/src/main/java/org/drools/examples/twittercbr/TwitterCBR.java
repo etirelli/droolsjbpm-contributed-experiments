@@ -65,7 +65,7 @@ public class TwitterCBR {
         new Thread( new Runnable() {
             @Override
             public void run() {
-                StatusListener listener = new TwitterStatusListener( ep );
+                StatusListener listener = new TwitterStatusListener( ksession, ep );
                 TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
                 twitterStream.addListener( listener );
                 twitterStream.sample();
@@ -99,7 +99,7 @@ public class TwitterCBR {
      */
     private static StatefulKnowledgeSession createKnowledgeSession( final KnowledgeBase kbase ) {
         final KnowledgeSessionConfiguration ksconf = KnowledgeBaseFactory.newKnowledgeSessionConfiguration();
-        ksconf.setOption( ClockTypeOption.get( ClockType.REALTIME_CLOCK.getId() ) );
+        ksconf.setOption( ClockTypeOption.get( ClockType.PSEUDO_CLOCK.getId() ) );
         final StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession( ksconf, null );
         return ksession;
     }

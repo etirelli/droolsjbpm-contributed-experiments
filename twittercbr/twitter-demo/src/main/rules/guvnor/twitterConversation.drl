@@ -1,0 +1,20 @@
+package org.drools.examples.twittercbr
+
+import twitter4j.Status
+import twitter4j.Place
+
+global org.drools.examples.twittercbr.model.UIService uiservice
+
+declare Status
+    @role( event )
+end
+
+rule "Dump tweets from user conversation"
+when
+    $s1 : Status( $name : user.screenName ) from entry-point "twitter"
+    $s2 : Status( inReplyToScreenName == $name, this after[1ms,2m] $s1 ) from entry-point "twitter"
+then
+    uiservice.show( $s1, "Twitted:" );
+    uiservice.show( $s2, "Replied:" );
+end
+

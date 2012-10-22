@@ -6,8 +6,6 @@ import java.text.MessageFormat
 
 declare Status
     @role( event )
-    @timestamp( createdAt )
-    //@expires( 6m )
 end
 
 rule "Dump tweets from user conversation"
