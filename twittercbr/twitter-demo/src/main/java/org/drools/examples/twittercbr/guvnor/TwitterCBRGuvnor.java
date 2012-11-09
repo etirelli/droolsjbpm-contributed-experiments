@@ -172,12 +172,13 @@ public class TwitterCBRGuvnor {
         KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
         switch( source ) {
             case GUVNOR:
-                kbuilder.add( ResourceFactory.newUrlResource( "http://localhost:8080/guvnor-5.4.0.Final-jboss-as-7.0/org.drools.guvnor.Guvnor/package/demo.twitter.pkg1/LATEST/ChangeSet.xml" ), 
+                kbuilder.add( ResourceFactory.newUrlResource( "http://localhost:8080/guvnor-5.4.0-SNAPSHOT-jboss-as-7.0/org.drools.guvnor.Guvnor/package/demo.twitter.pkg1/LATEST/ChangeSet.xml" ), 
                               ResourceType.CHANGE_SET );
                 frame.log( "Loading rules from Guvnor...");
                 break;
             case ECLIPSE:
                 kbuilder.add(  ResourceFactory.newClassPathResource( "guvnor/twitterConversation.drl" ), ResourceType.DRL );
+                kbuilder.add(  ResourceFactory.newClassPathResource( "guvnor/twitterTimeWindow.drl" ), ResourceType.DRL );
                 frame.log( "Loading rules from Eclipse...");
                 break;
         }
